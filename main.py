@@ -1,26 +1,31 @@
-#!/data/data/com.termux/files/usr/bin/python3
+import os    # importing os module to deal with directories and files
 
-import os
+path = input("Your directory path(press enter for current directory): ")
 
-reqpath = input("Enter your dir path: ")
+if path == "":
+	path = os.getcwd()
 
-if os.path.isfile(reqpath):
-	print("The given path is a file ! Enter the dir path.")
+# checking if given path is a file
+if os.path.isfile(path):
+	print("The given path is a file ! Enter the path of any directory.")
 else:
-	allfds = os.listdir(reqpath)
-	if len(allfds) == 0:
+	# listing all files in this path
+	allFiles = os.listdir(path)
+
+	if len(allFiles) == 0:
 		print("This directory is empty !!!")
 	else:
-		reqex = input("Enter the extension of file as .py/.sh/.txt/.log: ")
-		reqfiles = []
-		for eachf in allfds:
-			if eachf.endswith(reqex):
-				reqfiles.append(eachf)
-		if len(reqfiles) == 0:
-			print(f"\nThere is no file with {reqex} extension on this path.\n")
+		# taking input extension of file that you want to get
+		extensionOfFile = input("Enter the extension of output files(.txt/.py/.html): ")
+		outputFiles = []
+		for file in allFiles:
+			if file.endswith(extensionOfFile):
+				outputFiles.append(file)
+		if len(outputFiles) == 0:
+			print(f"\nThere is no file with {extensionOfFile} extension on this path.\n")
 		else:
 			print("-"*50)
-			print(f" {len(reqfiles)} files with {reqex} extension.")
+			print(f" {len(outputFiles)} file(s) with .{extensionOfFile} extension.")
 			print("-"*50)
-			print(f"And output is/are: \n{reqfiles}\n")
+			print(f"And output files is/are: \n{outputFiles}\n")
 
