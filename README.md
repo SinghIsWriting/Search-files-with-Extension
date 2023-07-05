@@ -2,8 +2,8 @@
 Basically, this is a simple python scripts that show list of all the files according to required extension of file in a particular path.
 
 # Prerequisites
-> Python interpreter
-> Basic understanding of python programming concepts
+* Python interpreter
+* Basic understanding of python programming concepts
 
 # How to Run
 1. Clone the repository or download the source code file.
